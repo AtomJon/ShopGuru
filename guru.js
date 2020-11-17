@@ -49,7 +49,7 @@ function initGoogleMap() {
     
     google.maps.event.addDomListener(startButton, 'click', turnMic);
     
-    recognition.onspeechend = () => fade(talkingIndicator);
+    recognition.onspeechend = recognition.onerror = () => fade(talkingIndicator);
     
     uiDiv.appendChild(startButton);
     controlDiv.appendChild(uiDiv);
