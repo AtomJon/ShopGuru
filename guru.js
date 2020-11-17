@@ -49,7 +49,7 @@ function initGoogleMap() {
     
     google.maps.event.addDomListener(startButton, 'click', turnMic);
     
-    recognition.onspeechend = recognition.onerror = () => fade(talkingIndicator);
+    recognition.onspeechend = () => fade(talkingIndicator);
     
     uiDiv.appendChild(startButton);
     controlDiv.appendChild(uiDiv);
@@ -216,10 +216,7 @@ function pythagorasEquirectangular(pos1, pos2) {
   return d;
 }
 
-recognition.onnomatch = function(event) {
-  alert("Hvad sagde du?");
-}
-
 recognition.onerror = function(event) {
   console.error('Error occurred in recognition: ', event);
+  fade(talkingIndicator);
 }
